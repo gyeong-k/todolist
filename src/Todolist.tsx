@@ -27,9 +27,9 @@ const TodoList: React.FC = () => {
       <div className="container">
         <div className="board">
           <ul>
-            <li>{todos[0].text}</li>
-            <li>{todos[1].text}</li>
-            <li>{todos[2].text}</li>
+            {todos.map((todo, index) => (
+              <li key={index}>{todo.text}</li>
+            ))}
           </ul>
         </div>
       </div>
