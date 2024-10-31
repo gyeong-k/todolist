@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 
 //type : 가독성, 유지보수
 //인터페이스 안쓴이유 -> 기존의 타입을 사용해 새로운 타입
@@ -34,6 +35,18 @@ const TodoList: React.FC = () => {
       <h1>{title}</h1>
       <p></p>
       <div className="container">
+        <div>
+          <input
+            type="text"
+            placeholder="할일 입력"
+            style={{ marginRight: "10px", writingMode: "horizontal-tb" }}
+          />
+          <Button variant="warning" onClick={() => {}}>
+            추가
+          </Button>
+        </div>
+        <p></p>
+
         <div className="board">
           <ul>
             {todos.map((todo, index) => (
