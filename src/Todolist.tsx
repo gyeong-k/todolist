@@ -39,6 +39,10 @@ const TodoList: React.FC = () => {
       setNewTodo("");
     }
   };
+
+  const removeTodo = (id: number) => {
+    setTodos(todos.filter((todo) => todo.id !== id)); //넘어온 id랑 같은 건 제외시키고 새로운 배열 생성해 화면에 보여줌
+  };
   return (
     <div>
       <h1>{title}</h1>
@@ -74,6 +78,12 @@ const TodoList: React.FC = () => {
                     <span>{todo.text}</span>
                   )}
                 </span>
+                <button
+                  onClick={() => removeTodo(todo.id)}
+                  className="delbutton"
+                >
+                  삭제
+                </button>
               </li>
             ))}
           </ul>
