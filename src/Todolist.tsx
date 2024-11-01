@@ -23,6 +23,8 @@ const TodoList: React.FC = () => {
   ]); //state의 데이터, 변경함수 순서
 
   const [newtodo, setNewTodo] = useState<string>("");
+  const [showDetail, setShowDetail] = useState<boolean>(false);
+  const [selectedTodo, setSelectedTodo] = useState<Todo | null>(null);
 
   //prevItems = todos
   const handleCheckedChange = (itemId: number) => {
@@ -42,6 +44,15 @@ const TodoList: React.FC = () => {
 
   const removeTodo = (id: number) => {
     setTodos(todos.filter((todo) => todo.id !== id)); //넘어온 id랑 같은 건 제외시키고 새로운 배열 생성해 화면에 보여줌
+  };
+
+  const handleTodoClick = (todo: Todo) => {
+    setShowDetail(true);
+    setSelectedTodo(todo);
+  };
+
+  const handleCloseDetail = () => {
+    setShowDetail(false);
   };
   return (
     <div>
@@ -71,7 +82,7 @@ const TodoList: React.FC = () => {
                     handleCheckedChange(todo.id);
                   }}
                 ></input>
-                <span>
+                <span onClick={() => handleTodoClick(todo)}>
                   {todo.isChecked ? (
                     <del>{todo.text}</del>
                   ) : (
