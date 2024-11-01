@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
+import TodoModal from "./TodoModal";
 
 //type : 가독성, 유지보수
 //인터페이스 안쓴이유 -> 기존의 타입을 사용해 새로운 타입
@@ -100,6 +101,11 @@ const TodoList: React.FC = () => {
           </ul>
         </div>
       </div>
+      <TodoModal
+        show={showDetail}
+        todo={selectedTodo}
+        handleClose={handleCloseDetail}
+      ></TodoModal>
     </div>
   );
 };
